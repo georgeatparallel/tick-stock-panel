@@ -66,7 +66,7 @@ async def search_web(instrument: dict, topic: str, url: str | None) -> dict:
     # 新建无认证客户端, 不读取 Parallel Key 或面板 Token。
     async with (
         httpx2.AsyncClient(
-            headers={"User-Agent": USER_AGENT}, timeout=60, trust_env=False,
+            headers={"User-Agent": USER_AGENT}, timeout=60,
         ) as http,
         streamable_http_client(PARALLEL_URL, http_client=http) as (read, write),
         ClientSession(read, write, read_timeout_seconds=60) as session,
